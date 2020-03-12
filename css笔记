@@ -1,0 +1,42 @@
+文本修饰标签
+del + ins 一般这两个一起出现 比如商品促销中
+s   u  一样的样式
+2. strong  em 代表强调 strong强调性比较强 强调一句话  em强调一个词
+   b i 
+3.sup上标  sub下标
+4.base元素：可以定义一个网页的URL基础，也可以定义一个网页所有连接的打开方式
+5.表格：cellpadding  cellspacing align valign
+6.label for=表单ID <label><input type="text"></label> label里面嵌套表单元素，将表单元素因此，label可以模拟表单元素的行为
+
+CSS
+1.多背景图 background-image:url(),url..不同的背景图用逗号隔开 控制这些背景图的其他属性也用逗号隔开
+2.background-size:cover将图片按原比例拉伸，直到铺满元素，多余部分不展示
+        contain将图片按原比例拉伸，直到水平或垂直方向任一方向铺满容器，另一方向留白
+         百分比
+3.background-origin:border-box/padding-box/content-box定义背景从哪个盒子铺起
+4.background-clip:当值和上面属性的值不一致且有背景图片时就可以看出区别
+5.background-attachment:local 背景随内容的滚动而滚动
+6.背景视觉差效果：设置background-attachment:fixed 往下拉下面的背景图就会相对于窗口固定，就会看到好像有两层的背景。
+
+边框border
+1.border-style:dashed dotted double(双线宽度永远相等，中间间隔+-1)
+2.border-color:默认为元素的color值 具有类似特性的还有out-line box-shadow text-shadow
+3.border 与透明边框技巧
+  (1)利用border-color：transparent增加点击区域大小,padding也可以，但有时小图标是个背景图，有background-position属性，此时用padding就要从新计算
+  (2)背景图片距离元素右边50px定位(元素宽度自适应),当然padding也是可以的
+4.border 与聊天框三角形
+  （1）两个三角形叠加在一起，将其中一个的width变长 就会出现聊天框三角形
+5.border两栏等高布局
+   将其中一个子元素浮动 移动到左border区域 清除浮动，此时浮动的子元素高度变化，父元素高度也变化(另一个子元素其实高度没变，只是他的背景色与父元素一致)
+   不浮动的子元素高度变高，浮动子元素高度不变，只是边框变高了，而浮动元素的背景色与border一致而已，
+   注意：父元素不能设置overflow:hidden;
+
+   font字体
+   font-family: 字体名字中间有空格的要加引号
+   font-weight:100-500 normal  600-900 bold
+   word-break:break-all 非常强烈的换行   word-wrap:break-word 不是强烈的换行 会有留白产生
+   css复合样式： 
+        1.有些复合样式没有顺序要求，有些需要排序
+        2.当需要写混合样式时，一般先写复合样式，再写单一样式，不然会被覆盖
+6.CSS选择器
+    结构性伪类选择器：nth-of-type(n) N代表0-infinity 2n偶数 2n+1奇数
