@@ -17,6 +17,7 @@ CSS
 4.background-clip:当值和上面属性的值不一致且有背景图片时就可以看出区别
 5.background-attachment:local 背景随内容的滚动而滚动
 6.背景视觉差效果：设置background-attachment:fixed 往下拉下面的背景图就会相对于窗口固定，就会看到好像有两层的背景。
+ 背景色默认从border-box 开始填充，只是被border覆盖了
 
 边框border
 1.border-style:dashed dotted double(双线宽度永远相等，中间间隔+-1)
@@ -40,3 +41,131 @@ CSS
         2.当需要写混合样式时，一般先写复合样式，再写单一样式，不然会被覆盖
 6.CSS选择器
     结构性伪类选择器：nth-of-type(n) N代表0-infinity 2n偶数 2n+1奇数
+  CSS继承：文字相关的属性可以继承，布局相关的属性不可继承 强制继承设置属性值为inherit
+7.盒模型
+ (1) margin padding的百分比不管宽高都是相对应与父容器的宽度计算的，内联元素有不一样的表现
+ (2) margin传递问题，只会出现在margin-top中
+ (3) margin:auto 一边确定，另一边auto则分配剩余的空间，这个特性可使元素显示在右边
+
+ 8.内联元素之间的空隙 是换行符产生的，怎么消灭空隙
+   (1)多个内联元素排在一行时，写代码时不要换行
+   (2)将父元素的font-size：0 子元素再恢复font-size的值
+9.透明度与鼠标样式
+  (1) opacity 针对整个元素 rgba() 针对背景色
+  (2) cousor:url(xx.ico),auto 自定义鼠标样式，图片类型不能是常规类型
+10.min/max-width  min/max-height
+  （1）默认值：min*：auto  max：none
+   (2) 优先级超越!import ,超越最大(min>max是有效的)
+   (3) 利用max-height实现任意高度展开收起动作，因为0-auto无法计算，不能形成动画，确保max-height足够大，但又不能太大
+11.浮动的特性
+    1.多个浮动元素排列不下，就会换行排列，如果第一行有个元素的高度比较高，那后面的元素就会排在上面比较高的元素的后面
+12.position:
+    (1)sticky 黏性定位 position:sticky top:100px 假如元素在页面中部，只要窗口没移到这个元素，他就该怎样就是怎样，但只要继续往下拉，直到他出现在窗口top100px时，他就会表现的跟fixed一样
+13.溢出内容 省略号
+   9) 内容超出容器限制，white-space:nowrap  overflow:hidden text-overflow:ellpsis;
+14.iframe  srcdoc属性:跟innerHTML有点类似 当这个属性存在时会覆盖SRC属性
+15.area shape='poly'多边形 要把每个点的坐标都填上
+16.audio video
+  (1)controls 显示控件 loop循环 autoplay自动播放
+  (2)为了兼容可以用多个<source src=""></source>元素来引用不同的格式
+17表格：
+  1)隐藏空单元table{empty-cells:hide}
+  2)斜线单元格: border position rotate
+18.美化表单控件
+  1):checked  将label 与表单元素绑定，隐藏表单元素，此时点击label区域就相当于点击表单元素 通过input:checked 改变模拟元素的背景
+  2)position + opacity 
+19.BFC规范
+  1)浮动元素，定位元素(absolute fixed) overflow display:inline-block flex table-cells
+  2)形成一个独立的容器，不受外部的影响，容器内部的元素也不会影响外部元素
+  3)
+  
+  tranform变换
+   2D 变换
+     1)translate(x,y)  translateX translateY
+     2)scale( ) 缩小0.01-0.99 可取负值，先翻转再缩放 scaleX scaleY
+     3)skew(deg) X轴 正值左倾斜 负值右倾斜  
+     4)rotate() rotateZ( ) 
+  3D变换
+    1)translateZ( ) translate3d( )定义元素距离屏幕的距离
+    2)scaleZ() scale3d( ) 定义3D元素的厚度
+    3)rotateX( ) rotateY( ) rotate3d(0|1 0|1 0|1 deg)正值都是往第一象限旋转
+    4)perspective:px 定义观察点距离3D元素的距离 perspective-origin:
+    5)transform-style:flag(默认2d) perserve-3d 这个属性要设置在变换元素的父元素上
+  注意事项：
+    1)transform 可以复合变换 执行顺序 从后面开始执行
+    2)translate 会被其他变换影响，一般把translate放在最后面
+    3）Z轴不能设置百分比
+    4)变换只能添加给块元素
+    5)backface-visibility:hidden visible
+  背景渐变 linear-gradient()
+    1)background-image: linear-gradient(angle,colorend1 %,colorstart2 %，colorend2 %,..)
+    2)元素上班为180deg  下边为0deg
+    3)colorstart = colorend 这代表一段纯色
+    4)元素中间位置的中线渐变背景：用span白色背景覆盖一段区域 -- span --
+    5)利用fieldset 默认的样式也可以 fieldset{border:none;border-top:1px solid gray;text-align:center;}  legend{padding:0 20px;}
+  遮罩 mask 
+    1)-webkit-mask:url(xx)   透明区域会使元素不显示，这个属性跟background-image是兄弟
+  -wek-kit-box-reflect:倒影
+    1)above  right left below
+    2)-webkit-box-reflect:direction 间距 mask|linear-gradient(渐变只能对透明度渐变)
+    3）倒影也可以用scale(-1) 来实现
+  模糊与计算
+    1）filter:blur( ) 值越大越模糊
+    2）calc( 表达式)  可以用在需要计算的属性里
+  分栏布局：
+    1)column-count  column-width: 这两个属性有冲突
+    2)column-gap:间距
+    3)column-rule:分栏的边框
+    4）column-span:合并分栏 all 对容器内的某个元素使用
+CSS hack
+  1）ietester IE多版本测试工具
+  2)css属性前缀法 _IE6及以下 + or * 针对IE7及以下 
+    \9加在属性值后面 针对IE6-IE9
+    \0 针对IE8-IE11
+  3)选择器前缀法
+   *html .xx{}  针对IE6 *+htmlIE7  :root 针对IE9及以上
+  4)IE注释法 IE10及以上已经不支持了
+渐进增强：针对低版本浏览器进行构建页面，保证最基本的功能，然后再对高级浏览器进行效果，交互等改进和追加功能达到更好的用户体验。
+
+优雅降级：一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。
+等高布局：
+  1）table-cells  
+  2）margin-bottom负值+padding-bottom 撑开父元素的高度 
+  3）border-left+浮动元素，
+
+双飞翼：左右两边宽固定 中间自适应
+  1)浮动
+flex布局：不换行的情况下宽度不足时会压缩项目的宽度
+  1)flex-direction flex-wrap flex-flow jusitfy-content align-items align-content
+  2)项目属性order flex-grow flex-shrink flex-basis flex align-self
+  3)jusitfy-content:space-evenly :每个项目的间距都是一样的
+  4)flex-basis:为项目分配剩余的空间：剩余空间的100% 10%
+网格布局grid
+display:grid  
+  1)grid-template-rows:  grid-template-columns: grid-template-areas grid-template:
+    repeat(3 lfr) 如果有多列或多行的大小一致 可以使用repeat 函数
+   grid-template: "a1 a1 a1" 1fr  在子元素上定义其属于哪个区域xx{grid-area:a1;}
+                  "a2 a2 a3" 2fr  有多少个区就有多少个子元素
+                  "a3 a3 a3" 1fr
+                  /1fr 1fr 1fr;
+  2）容器上设定grid-row-gap/grid-column-gap  grid-gap设置间距
+  3）justify-items:stretch默认水平拉伸，start左侧 end右侧 center水平居中
+  align-items:start顶部对齐 end底部对齐 center垂直居中
+  place-items: align-items justify-items 
+  4)justify-content align-content place-content
+    属性：stretch start end center space-between space-around space-evenly
+    将所有的网格子元素看成一个元素，设置其的水平或垂直分布方式，这个元素的大小要小于网格容器才能看出区别
+
+  5）作用在网格子元素上的属性
+    grid-column-start/end:垂直方向第几条网格线 grid-column:3/4
+    grid-row-start/end:水平方向第几条网格线   定义元素的位置 grid-row
+    end方向有个span 占据的网格线个数  grid-row-end:span 2;
+    grid-area:定义子元素属于哪个区域 或定义子元素的位置 grid-area:a1 
+    grid-area:rowstart/colstart/rowend/colemd
+  6)justify-self 单个元素在水平方向上的对齐方式 align-self:
+    place-self:
+移动端适配方案
+  1.百分比布局，也叫流式布局 代表网站：优酷 百度天猫 腾讯
+  2.等比缩放布局，也叫rem布局,代表网站：淘宝 网易 美团
+  1.1 文字流式 控件弹性 图片等比缩放
+    好处：大屏幕下显示更多的内容， 坏处：宽屏下比例会有一些不协调
