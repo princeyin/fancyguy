@@ -1,0 +1,9 @@
+link:https://jquery.com/
+http://jquery.cuishifeng.cn/not_1.html
+选择器：
+  1）:first $('div:first')文档中的第一个div  $('.box>div:first') 
+  2):not(selector)  
+  3):even 偶数 从0开始   :odd 奇数  :eq(index)  :gt(index) :lt(index)
+  4):animated 匹配所有正在执行动画效果的元素
+  5):hidden  匹配所有不可见元素，或者type为hidden的元素
+改变css样式：css('name','value')  or css({name:value,name:value})
