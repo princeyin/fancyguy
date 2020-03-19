@@ -49,5 +49,6 @@ $(function($) {
   6）animate(params,[speed],[easing],[fn])  params:一组包含作为动画属性和终值的样式属性和及其值的集合
     delay(duration,[queueName])  设置一个延时来推迟执行队列中之后的项目。 $('#foo').slideUp(300).delay(800).fadeIn(400);
     
-
+遍历数组和对象
+  1)$.each(obj,fn) function(index,value)
    
