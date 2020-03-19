@@ -1,5 +1,12 @@
 link:https://jquery.com/
 http://jquery.cuishifeng.cn/not_1.html
+  $(document).ready(function(){
+  // 在这里写你的代码... 加载事件
+});
+$(function($) {
+  // 你可以在这里继续使用$作为别名... 使用 $(document).ready() 的简写，同时内部的 jQuery 代码依然使用 $ 作为别名，而不管全局的 $ 为何
+});
+
 选择器：
   1）:first $('div:first')文档中的第一个div  $('.box>div:first') 
   2):not(selector)  
@@ -7,3 +14,25 @@ http://jquery.cuishifeng.cn/not_1.html
   4):animated 匹配所有正在执行动画效果的元素
   5):hidden  匹配所有不可见元素，或者type为hidden的元素
 改变css样式：css('name','value')  or css({name:value,name:value})
+  1)height() 取得匹配元素当前计算的高度值（px） width() 取得第一个匹配元素当前计算的宽度值（px）
+
+改变HTML样式
+  1）attr() 设置或返回被选元素的属性值。
+  2)removeAttr(name) 移除属性
+  3）prop() 获取在匹配的元素集中的第一个元素的属性值。 这两个和上面两个一样，只是针对一些内置的window对象
+  removeProp(name) 用来删除由.prop()方法设置的属性集随着一些内置属性的DOM元素或window对象，如果试图将删除该属性，浏览器可能会产生错误。
+  jQuery第一次分配undefined值的属性，而忽略了浏览器生成的任何错误
+  4）addClass(class|fn) 为每个匹配的元素添加指定的类名  removeClass([class|fn])  removeClass([class|fn])
+获取文本内容
+  1）html([val|fn])  获取匹配元素的所有内容包括子元素 
+  2）text([val|fn])  获取所有的文本内容包括子元素的文本内容
+  3）val([val|fn|arr]) 获得匹配元素的当前值。
+ 
+事件
+ 1)绑定事件 on(events,[selector],[data],fn)   data:当一个事件被触发时要传递event.data给事件处理函数。
+   off(events,fn) 在选择元素上移除一个或多个事件的事件处理函数。 events:一个或多个空格分隔的事件类型和可选的命名空间
+ 2)trigger(type,[data]) 触发事件 ，前提是已经绑定了该事件
+ 3)其他事件跟JavaScript一样 只是不加on
+ 事件切换
+  1）hover(fn,fn) 鼠标移进fn  鼠标移出fn 如果只有一个函数则执行两遍 on()好像绑定不了，因为这个不是事件，只是一个方法
+  2）toggle([speed],[easing],[fn]) 这个事件会改变匹配元素的display值 none/block 
