@@ -33,6 +33,21 @@ $(function($) {
    off(events,fn) 在选择元素上移除一个或多个事件的事件处理函数。 events:一个或多个空格分隔的事件类型和可选的命名空间
  2)trigger(type,[data]) 触发事件 ，前提是已经绑定了该事件
  3)其他事件跟JavaScript一样 只是不加on
- 事件切换
+ 效果
   1）hover(fn,fn) 鼠标移进fn  鼠标移出fn 如果只有一个函数则执行两遍 on()好像绑定不了，因为这个不是事件，只是一个方法
   2）toggle([speed],[easing],[fn]) 这个事件会改变匹配元素的display值 none/block 
+  3)show([speed,[easing],[fn]]) 显示隐藏的匹配元素。  hide([speed,[easing],[fn]])
+  4) 滑动 通过向下或向上改变元素的高度 
+    slideDown([speed],[easing],[fn]) 这个动画效果只调整元素的高度，可以使匹配的元素以“滑动”的方式显示出来 
+    slideUp([speed,[easing],[fn]]) 向上减少高度，使元素隐藏(如果元素本来就是隐藏的没任何效果)
+    slideToggle([speed],[easing],[fn])  
+  5)淡入淡出
+    fadeIn([speed],[easing],[fn])  通过不透明度的变化来实现所有匹配元素的淡入效果
+    fadeOut([speed],[easing],[fn])
+    fadeTo([[speed],opacity,[easing],[fn]]) 把所有匹配元素的不透明度以渐进方式调整到指定的不透明度
+    fadeToggle([speed,[easing],[fn]])
+  6）animate(params,[speed],[easing],[fn])  params:一组包含作为动画属性和终值的样式属性和及其值的集合
+    delay(duration,[queueName])  设置一个延时来推迟执行队列中之后的项目。 $('#foo').slideUp(300).delay(800).fadeIn(400);
+    
+
+   
