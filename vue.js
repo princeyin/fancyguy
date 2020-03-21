@@ -8,7 +8,10 @@ https://cn.vuejs.org/
   2)指令：v-bind:DOMattr="js变量"  v-bind:title="logo"  将一个变量绑定给 DOM属性
          v-if="true/false"  可以作为DOM的一个属性，可以动态的创建和删除元素
          v-show            可以动态的显示和隐藏元素  缩写：:show
-         v-for="i in arr" 遍历一个数组或对象，这个属性要放在实例化元素的子元素上 new Vue({el:'#parent',data:{arr:['lol','dnf']}}) 
+         v-for="i in arr" 遍历一个数组或对象，这个属性要放在实例化元素的子元素上 new Vue({el:'#parent',data:{arr:['lol','dnf']}})
+              在这个作用域内 可以访问父元素的作用域，也就是可以访问Vue对象 的所有属性 方法
+              如果 有第二个参数，代表索引  v-for="(value,index) in arr"   
+              遍历对象可以有三个参数  value  name index
            <div id="parent"><div v-for="game in arr">{{game}} Vue已经将所有项放在game上，
          v-on:事件 v-on:click="handleclick"   new Vue({el: methods:{handleclick:function(){}}) 缩写：@click:
          v-model  对表单元素输入内容 
@@ -32,6 +35,10 @@ Vue的计算属性： computed:{} 存放一些需要计算并返回值的函数 
 条件渲染
   v-else 元素必须紧跟在带 v-if 或者 v-else-if 的元素的后面，否则它将不会被识别
   v-else-if 元素必须紧跟在带 v-if 或者 v-else-if 的元素的后面，否则它将不会被识别  v-else-if 可以重复使用多个
+数组更新检查 ：当对数组使用方法时，有些方法会改变原数组的数据，Vue会及时响应，而有些方法不会改变原数组的数据，也就不会改变DOM
+    由于 JavaScript 的限制，Vue 不能检测以下数组的变动：
+    当你利用索引直接设置一个数组项时，例如：vm.items[indexOfItem] = newValue
+    当你修改数组的长度时，例如：vm.items.length = newLength
 组件
   // 定义名为 todo-item 的新组件
   Vue.component('todo-item', { template: '<li>这是个待办项</li>'}) 然后在DOM中<todo-item></todo-item> 可以对这个元素添加属性 添加Vue的数据
