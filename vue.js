@@ -58,6 +58,7 @@ Vue的计算属性： computed:{} 存放一些需要计算并返回值的函数 
     1）可以使用 Vue.set(object, propertyName, value) 方法向嵌套对象添加响应式属性
     2）添加多个属性 vm.userProfile = Object.assign({}, vm.userProfile, { age: 27,favoriteColor: 'Vue Green'})
     3）排序或过滤后不改变源对象时，可用计算属性或方法来展现变更后的数据
+key:跟踪每个节点的身份，从而实现重用和重新排序现有元素
    
 组件
   // 定义名为 todo-item 的新组件
