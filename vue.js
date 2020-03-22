@@ -28,7 +28,7 @@ https://cn.vuejs.org/
           checkbox 和 radio 使用 checked 属性和 change 事件--改变选中状态，v-model绑定的变量值(数组)会变
             为什么绑定的变量是个数组？  如果是个字符串，选中一个按钮，其他的按钮也会被选中
             如果表单没有value属性，选中任意个选项，其他选项也会别选中，因为：变量数组会被赋值为null 而null为真
-         修饰符：v-model.number  v-model.trim
+         修饰符：v-model.number  v-model.trim  v-model.lazy 表单失去焦点是在触发事件 不用时时刻刻触发事件
          v-once  vue的数据改变不会再影响DOM
          v-html 可以render Vue变量中含有HTML代码  <div v-html="data">
          v-class 动态类名
@@ -63,3 +63,7 @@ key:跟踪每个节点的身份，从而实现重用和重新排序现有元素
 组件
   // 定义名为 todo-item 的新组件
   Vue.component('todo-item', { template: '<li>这是个待办项</li>'}) 然后在DOM中<todo-item></todo-item> 可以对这个元素添加属性 添加Vue的数据
+axios and  fetch
+fetch是js标准，号称ajax的替代品，但是就得浏览器不支持Promise 需要使用polyfill es6-promise
+  fetch(url).then(response=>{if(response.ok){reurn response.json();}}).then(data=>console.log(data)).catch(err=>console.log(err))
+                  
