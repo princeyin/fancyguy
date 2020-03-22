@@ -26,7 +26,9 @@ https://cn.vuejs.org/
          v-model  对表单元素输入内容 
           text 和 textarea 元素使用 value 属性和 input 事件--改变内容，绑定的变量值也会改变
           checkbox 和 radio 使用 checked 属性和 change 事件--改变选中状态，v-model绑定的变量值(数组)会变
-            为什么绑定的变量是个数组？ 
+            为什么绑定的变量是个数组？  如果是个字符串，选中一个按钮，其他的按钮也会被选中
+            如果表单没有value属性，选中任意个选项，其他选项也会别选中，因为：变量数组会被赋值为null 而null为真
+         修饰符：v-model.number  v-model.trim
          v-once  vue的数据改变不会再影响DOM
          v-html 可以render Vue变量中含有HTML代码  <div v-html="data">
          v-class 动态类名
