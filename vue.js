@@ -68,8 +68,18 @@ key:跟踪每个节点的身份，从而实现重用和重新排序现有元素
   组件的特性：
       1）父子组件的属性和方法是属于各自的，无法共享
       2）组件可以有data method computed,但是data必须是个函数
-      3）props:[属性1，属性2...]这些自定义的属性 可以通过v-bind:属性1=父组件的属性值--相当于一个通道，接收了父组件的数据，然后子组件可以用
+      3）props:[属性1，属性2...]这些自定义的属性 可以通过v-bind:属性1=父组件的属性值(写在DOM上，而不是component上)--相当于一个通道，接收了父组件的数据，然后子组件可以用
               属性验证类型：props:{name:string,name2:function,name3:object}
+      4）子传父  通过事件template: `<div >{{myname}}<button @click="$emit('changename')">点我</button></div>`
+            $emit(event[,事件执行抛出一个值]) 触发DOM中组件模板上绑定的自定义事件 这个值可通过$event取得，
+            如果DOM中组件模板上绑定的自定义事件的值是个函数，可通过第一个参数传参
+     5）data 必须是一个函数 data:function(){return {cc:1,nn:2}}
+     6)ref传递  在父元素作用域内设置一个ref属性 ref="myname"  
+         如果这个ref作用在DOM元素上 此时vm对象上的有个$refs对象，其属性$refs.myname存储的是一个DOM
+         如果这个ref作用在component组件上 此时vm对象上的有个$refs对象，其属性$refs.myname存储的是component组件对象
+          就可以在父对象上获取组件的数据 访问方法，也就可以像组件传参 传数据
+        由于这些数据是渲染模板后 加上去的，因此要用这些数据 得去取
+         
 axios and  fetch
 fetch是js标准，号称ajax的替代品，但是就得浏览器不支持Promise 需要使用polyfill es6-promise
   fetch(url).then(response=>{if(response.ok){reurn response.json();}}).then(data=>console.log(data)).catch(err=>console.log(err))
