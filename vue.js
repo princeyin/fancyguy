@@ -79,6 +79,19 @@ key:跟踪每个节点的身份，从而实现重用和重新排序现有元素
          如果这个ref作用在component组件上 此时vm对象上的有个$refs对象，其属性$refs.myname存储的是component组件对象
           就可以在父对象上获取组件的数据 访问方法，也就可以像组件传参 传数据
         由于这些数据是渲染模板后 加上去的，因此要用这些数据 得去取
+ 切换不同的组件--点击选项卡
+     1）<component v-bind:is="templatename"></component>  component内置的模板  
+     当在这些组件之间切换的时候，你有时会想保持这些组件的状态，以避免反复重渲染导致的性能问题
+     <!-- 失活的组件将会被缓存！-->
+      <keep-alive>
+      <component v-bind:is="currentTabComponent"></component>
+      </keep-alive>
+    2)组件卡槽（分发内容）
+        template:`<div><slot name="b"></slot>>iiiiii<slot name="a"></slot></div>`   
+          <todo >
+          <h1 slot="b">上面</h1>
+          <h2 slot="a">下面</h2>
+          </todo>
          
 axios and  fetch
 fetch是js标准，号称ajax的替代品，但是就得浏览器不支持Promise 需要使用polyfill es6-promise
