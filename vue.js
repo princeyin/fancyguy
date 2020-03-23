@@ -63,6 +63,8 @@ key:跟踪每个节点的身份，从而实现重用和重新排序现有元素
 组件
   // 定义名为 todo-item 的新组件
   Vue.component('todo-item', { template: '<li>这是个待办项</li>'}) 然后在DOM中<todo-item></todo-item> 可以对这个元素添加属性 添加Vue的数据
+  这是个全局组件
+  局部组件：Vue.component('todo-item',{},components:{'todochild',{template:}}  这个局部组件只能在父组件中使用
 axios and  fetch
 fetch是js标准，号称ajax的替代品，但是就得浏览器不支持Promise 需要使用polyfill es6-promise
   fetch(url).then(response=>{if(response.ok){reurn response.json();}}).then(data=>console.log(data)).catch(err=>console.log(err))
