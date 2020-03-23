@@ -92,7 +92,27 @@ key:跟踪每个节点的身份，从而实现重用和重新排序现有元素
           <h1 slot="b">上面</h1>
           <h2 slot="a">下面</h2>
           </todo>
-         
+过渡/动画  
+   1）Vue封装了一个组件<transition></transition> 来执行过渡  一个transition组件只能包含一个元素
+      enter==leave-to  enter-active==leave-active  显示过渡enter/enter-active/enter-to  隐藏过渡leave/levae-active/leave-to
+      类名前缀：如果transition 有name属性xx xx-enter  没有.v-enter 
+     enter/leave 表示动画开始前的第一帧  active:一个动画或过渡的时间段 to:动画/过渡的最后一帧
+      动画：css定义动画，在active时间段中使用动画
+      上述的类名 可以自定义 
+        <transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+        enter-class
+        enter-active-class
+        enter-to-class (2.1.8+)
+        leave-class
+        leave-active-class
+        leave-to-class
+     2）持续时间：<transition v-bind:duration="{enter:100,leave:1000}"
+多个元素的过渡和动画 并不是同时对多个元素进行过渡，而是通过绑定v-if v-else 才能确保transition里面只有一个元素
+     1）如果v-if绑定的元素 与v-else绑定的元素一样 只是内容不同，是不会有动画的
+     2）Vue的diff算法在作怪--操作DOM的时候会比较新旧节点的不同，首先比较元素值 如果元素值相同不会删除节点，只是替换内容，也就没有动画
+       解决办法：加key属性，先比元素 再比key值 key值不同就要删除节点
+     3）model:in-out | out-in  当显示与隐藏 同时发生时，谁先的问题
+列表过渡：<transition-group>
 axios and  fetch
 fetch是js标准，号称ajax的替代品，但是就得浏览器不支持Promise 需要使用polyfill es6-promise
   fetch(url).then(response=>{if(response.ok){reurn response.json();}}).then(data=>console.log(data)).catch(err=>console.log(err))
