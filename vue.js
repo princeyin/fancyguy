@@ -112,8 +112,25 @@ key:跟踪每个节点的身份，从而实现重用和重新排序现有元素
      2）Vue的diff算法在作怪--操作DOM的时候会比较新旧节点的不同，首先比较元素值 如果元素值相同不会删除节点，只是替换内容，也就没有动画
        解决办法：加key属性，先比元素 再比key值 key值不同就要删除节点
      3）model:in-out | out-in  当显示与隐藏 同时发生时，谁先的问题
-列表过渡：<transition-group>
+列表过渡：<transition-group> 
+     属性：name  tag=“tag”  定义一个标签用来包裹列表
+     列表元素 总是需要 提供唯一的 key 属性值
+     排序过渡：在对列表进行排序时，可以应用过渡，控制过渡属性的类名：v-move --v-enter-active
 axios and  fetch
 fetch是js标准，号称ajax的替代品，但是就得浏览器不支持Promise 需要使用polyfill es6-promise
   fetch(url).then(response=>{if(response.ok){reurn response.json();}}).then(data=>console.log(data)).catch(err=>console.log(err))
-                  
+过滤器：
+  可被用于一些常见的文本格式化。过滤器可以用在两个地方：双花括号插值和 v-bind 表达式 (后者从 2.1.0+ 开始支持)。
+  过滤器应该被添加在 JavaScript 表达式的尾部，由“管道”符号指示：<div v-bind:id="rawId | capitalize"></div>
+  局部过滤器：filters: {capitalize: function (value){回调函数}}   
+  全局过滤器：Vue.filter('capitalize', fn) 
+  过滤器可以串联：{{ message | filterA | filterB }} fn A 的返回结果作为fn B的参数
+自定义指令： 进行DOM底层操作
+ 全局指令：Vue.directive('directivename',inserted:function(el){})  
+局部指令：directives:{directiveName:{inserted:function(el){}}}
+参数：el-DOM节点 bind-一个对象{name：指令名，value：指令的绑定值...}  vnode oldVnode  
+DOM绑定  v-directive静态绑定/ v-directive=" '值'"  如果值是一个变量，则不需要单引号
+指令的钩子函数：bing()只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置
+              inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。
+              update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。
+              但是你可以通过比较更新前后的值来忽略不必要的模板更新
