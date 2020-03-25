@@ -1,2 +1,12 @@
 一、height：100%  如果父元素height：auto  此时是无效的  要么给父元素定一个高度，要么你就使用绝对定位--绝对定位的百分比相对于padding-box计算的
 二、替换元素：内容可替换，有自己的尺寸，基线为元素的下边缘，改变display值并不会影响尺寸计算规则(固有尺寸<html属性<css属性)
+三、object-fit:fill contain cover none保持原尺寸  scale-down:  
+   object-position:定义替换元素的填充内容对齐方式：
+四、font: 
+  1)text-indent:缩进可为负值隐藏内容，
+五、content一般在伪元素里使用，其生成的内容渲染在CSSDOM里面，显示的内容都是视觉上的，不能被选取，如果是图片不能被保存
+  1）content字符生成图标，还可以插入Unicode字符，比如\A -换行符中的LF字符
+  2）content生成base64图片
+  3）content闭合符号：配合quotes属性可以指定任意字符 比如：quotes:'aaa' 'fsfjsf';   前一个open-quote  后一个close-quote,当然quotes设定在父元素上
+  4）content：attr()
+  5)content计数器：counter-reset:name[ n] name n..
