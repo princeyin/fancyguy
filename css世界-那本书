@@ -16,4 +16,8 @@
     如果是多行文字(inline-block)以及替换元素的垂直居中，就不能基线对齐了， 得中间对齐才行 vetical-align:middle;
     line-height:1.5 /150% /1.5em  子元素继承的是1.5 这个数字  后面两个继承的是具体的像素
     行高的上边距计算时 要向下取整，一般字体都会往基线下面移一点
- 八、vetical-align:baseline top middle bottom/text-top text-bottom /sub super/数值 半分比
+ 八、vetical-align:baseline top middle bottom/text-top text-bottom /sub super/数值 半分比 正值往上偏移 负值往下偏移
+     字体大小不一致，经常导致父元素的高度比想象中高了几个px,子元素字体比较大，基线往下偏移，基线对齐时，整个元素就会往上以，导致父元素高了
+     父元素高度由图片撑起来，为什么在图片底下有空隙？ 图片是内联元素前面有个幽灵空白节点， 空隙就是行高的下半部分
+     解决办法：改变对齐方式  变块状 改变line-height  
+     替换元素的基线在元素的下边缘  inline-block内容为空或者设置了overflow属性 其基线在margin下边缘
