@@ -10,3 +10,10 @@
   3）content闭合符号：配合quotes属性可以指定任意字符 比如：quotes:'aaa' 'fsfjsf';   前一个open-quote  后一个close-quote,当然quotes设定在父元素上
   4）content：attr()
   5)content计数器：counter-reset:name[ n] name n..
+
+六、单位 ex ==一个x字符的高度  ，一般用在小图标的容器元素上  https://demo.cssworld.cn/5/1-1.php
+七、line-height  设置行高 == 容器height 为什么可以让内联元素垂直居中，因为默认基线对齐
+    如果是多行文字(inline-block)以及替换元素的垂直居中，就不能基线对齐了， 得中间对齐才行 vetical-align:middle;
+    line-height:1.5 /150% /1.5em  子元素继承的是1.5 这个数字  后面两个继承的是具体的像素
+    行高的上边距计算时 要向下取整，一般字体都会往基线下面移一点
+ 八、vetical-align:baseline top middle bottom/text-top text-bottom /sub super/数值 半分比
